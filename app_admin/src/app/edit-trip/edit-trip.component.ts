@@ -44,11 +44,13 @@ export class EditTripComponent implements OnInit {
       description: ['', Validators.required]
     })
 
+    console.log('EditTripComponent#onInit calling TripDataService#getTrip(\'' + tripCode + '\')');
+
     this.tripService.getTrip(tripCode)
-      .then(data=> {
+      .then(data => {
         console.log(data);
         //Don't use editForm.setValue() as it will throw console error
-        this.editForm.patchValue(data);
+        this.editForm.patchValue(data[0]);
       })
   }
 
